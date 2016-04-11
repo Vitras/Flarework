@@ -19,6 +19,7 @@ namespace FlareWork
         }
         public virtual void Update(GameTime time)
         {
+            Position += Velocity;
         }
     }
 }

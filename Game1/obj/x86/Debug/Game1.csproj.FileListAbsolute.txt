@@ -1,0 +1,1 @@
+D:\Personal projects\C#\Monogame C#\Flarework\Game1\obj\x86\Debug\Game1.csprojResolveAssemblyReference.cache

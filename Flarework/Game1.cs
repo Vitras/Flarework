@@ -11,11 +11,14 @@ namespace FlareWork
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        public static TextureManager Textures { get; set; }
+        Player player;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            Textures = new TextureManager(Content);
         }
 
         /// <summary>
@@ -27,7 +30,11 @@ namespace FlareWork
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height / 2;
+            graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width / 2;
+            graphics.ApplyChanges();
 
+            player = new Player(1, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2));
             base.Initialize();
         }
 
@@ -39,7 +46,8 @@ namespace FlareWork
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            Textures.Load("Player");
+            Textures.Load("Shield");
             // TODO: use this.Content to load your game content here
         }
 
@@ -61,9 +69,9 @@ namespace FlareWork
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            InputManager.Update();
             // TODO: Add your update logic here
-
+            player.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -76,8 +84,10 @@ namespace FlareWork
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            spriteBatch.Begin();
+            player.Draw(spriteBatch);
             base.Draw(gameTime);
+            spriteBatch.End();
         }
     }
 }
