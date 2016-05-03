@@ -50,11 +50,11 @@ namespace FlareWork.UI
         {
             if (State == MenuState.Normal)
             {
-                NewGame.Update(curMouse, preMouse);
-                Continue.Update(curMouse, preMouse);
-                Options.Update(curMouse, preMouse);
-                Extras.Update(curMouse, preMouse);
-                Exit.Update(curMouse, preMouse);
+                NewGame.Update();
+                Continue.Update();
+                Options.Update();
+                Extras.Update();
+                Exit.Update();
                 if (Options.Triggered)
                 {
                     Menus.Push(new OptionsMenu(textures, fonts));
@@ -72,11 +72,11 @@ namespace FlareWork.UI
             {
                 if (State == MenuState.Extras)
                 {
-                    SoundTest.Update(curMouse, preMouse);
-                    Cinematics.Update(curMouse, preMouse);
-                    Credits.Update(curMouse, preMouse);
+                    SoundTest.Update();
+                    Cinematics.Update();
+                    Credits.Update();
                 }
-                Back.Update(curMouse, preMouse);
+                Back.Update();
                 if(Back.Triggered)
                 {
                     State = MenuState.Normal;

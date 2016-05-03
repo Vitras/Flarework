@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using FlareWork.UI;
+using System;
 
 namespace FlareWork
 {
@@ -12,7 +14,8 @@ namespace FlareWork
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public static TextureManager Textures { get; set; }
-        Player player;
+        SimpleButton button;
+        //Player player;
 
         public Game1()
         {
@@ -32,9 +35,10 @@ namespace FlareWork
             // TODO: Add your initialization logic here
             graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height / 2;
             graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width / 2;
+            IsMouseVisible = true;
             graphics.ApplyChanges();
 
-            player = new Player(1, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2));
+            //player = new Player(1, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2));
             base.Initialize();
         }
 
@@ -48,6 +52,10 @@ namespace FlareWork
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Textures.Load("Player");
             Textures.Load("Shield");
+            Texture2D t =Textures.Load("BasicButtonInactive");
+            Texture2D t2= Textures.Load("BasicButtonHover");
+            button = new SimpleButton(Vector2.Zero, t, t2);
+            button.OnClick += (() => Console.WriteLine("Derp"));
             // TODO: use this.Content to load your game content here
         }
 
@@ -71,7 +79,8 @@ namespace FlareWork
                 Exit();
             InputManager.Update();
             // TODO: Add your update logic here
-            player.Update(gameTime);
+            //player.Update(gameTime);
+            button.Update();
             base.Update(gameTime);
         }
 
@@ -85,8 +94,9 @@ namespace FlareWork
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            player.Draw(spriteBatch);
+            //player.Draw(spriteBatch);
             base.Draw(gameTime);
+            button.Draw(spriteBatch);
             spriteBatch.End();
         }
     }

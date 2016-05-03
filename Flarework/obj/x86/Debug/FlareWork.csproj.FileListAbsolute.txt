@@ -36,3 +36,41 @@ D:\Personal projects\C#\Monogame C#\Flarework\FlareWork\bin\WindowsGL\Debug\Shar
 D:\Personal projects\C#\Monogame C#\Flarework\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\Player.png
 D:\Personal projects\C#\Monogame C#\Flarework\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\Shield.png
 D:\Personal projects\C#\Monogame C#\Flarework\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\Enemy.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\FlareWork.exe.config
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\obj\x86\Debug\FlareWork.exe
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\obj\x86\Debug\FlareWork.pdb
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\Enemy.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\Shield.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\Player.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\SFX\TextboxBegin.xnb
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\SFX\TextboxClose.xnb
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\SFX\TextboxNext.xnb
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\SFX\TextboxOpen.xnb
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\SFX\TextboxQuestion.xnb
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\SFX\TextboxQuestionNo.xnb
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\FlareWork.exe
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\FlareWork.pdb
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\MonoGame.Framework.dll
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\OpenTK.dll
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\SharpDX.MediaFoundation.dll
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\SharpDX.dll
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\SharpDX.XAudio2.dll
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\SharpDX.DXGI.dll
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\SharpDX.Direct3D11.dll
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\SharpDX.Direct2D1.dll
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\SharpDX.XInput.dll
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\SharpDX.RawInput.dll
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\SharpDX.Direct3D9.dll
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\MonoGame.Framework.xml
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\obj\x86\Debug\FlareWork.csprojResolveAssemblyReference.cache
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\BasicButtonHover.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\BasicButtonInactive.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\BasicLeftButtonHover.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\BasicLeftButtonInactive.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\BasicRightButtonHover.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\BasicRightButtonInactive.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\BasicSliderBar.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\BasicSliderDot.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\BasicSliderEnd.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\DefaultTextboxSprite.png
+C:\Users\vitra\Projects\Monogame C#\FlareWork\FlareWork\bin\WindowsGL\Debug\Content\Texture2D\GenericBackground.png

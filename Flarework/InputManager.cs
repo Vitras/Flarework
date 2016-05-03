@@ -58,6 +58,68 @@ namespace FlareWork
             return gpCurrent.IsButtonUp(b);
         }
 
+        private static ButtonState? GetMouseButton(int button, bool cur = true)
+        {
+            if (cur)
+                switch (button)
+                {
+                    case 0: return mCurrent.LeftButton;
+                    case 1: return mCurrent.RightButton;
+                    case 2: return mCurrent.MiddleButton;
+                    default: return null;
+                }
+            else
+                switch (button)
+                {
+                    case 0: return mPrevious.LeftButton;
+                    case 1: return mPrevious.RightButton;
+                    case 2: return mPrevious.MiddleButton;
+                    default: return null;
+                }
+        }
+
+        public static bool IsMouseDown(int button)
+        {
+            ButtonState? current = GetMouseButton(button);
+            if (current.HasValue)
+                return current == ButtonState.Pressed;
+            else
+                return false;
+        }
+
+        public static bool IsMouseUp(int button)
+        {
+            ButtonState? current = GetMouseButton(button);
+            if (current.HasValue)
+                return current == ButtonState.Released;
+            else
+                return true;
+        }
+
+        public static bool IsMouseReleased(int button)
+        {
+            ButtonState? current = GetMouseButton(button);
+            ButtonState? previous = GetMouseButton(button, false);
+            if (current.HasValue && previous.HasValue)
+                return current == ButtonState.Released && previous == ButtonState.Pressed;
+            else
+                return false;
+        }
+
+        public static bool IsMousePressed(int button)
+        {
+            ButtonState? current = GetMouseButton(button);
+            ButtonState? previous = GetMouseButton(button, false);
+            if (current.HasValue && previous.HasValue)
+                return current == ButtonState.Pressed && previous == ButtonState.Released;
+            else
+                return false;
+        }
+
+        public static Point GetMousePosition()
+        {
+            return mCurrent.Position;
+        }
         public static void Update()
         {
             kbPrevious = kbCurrent;

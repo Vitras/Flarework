@@ -34,8 +34,8 @@ namespace FlareWork.UI
         }
         public virtual void Update(MouseState curMouseState, MouseState preMouseState)
         {
-            LeftButton.Update(curMouseState, preMouseState);
-            RightButton.Update(curMouseState, preMouseState);
+            LeftButton.Update();
+            RightButton.Update();
             if (LeftButton.Triggered)
             {
                 CurrentVolume = Math.Max(CurrentVolume - 1, 0);
