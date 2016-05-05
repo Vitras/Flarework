@@ -29,13 +29,13 @@ namespace FlareWork.UI
             VoiceSlider = new NamedSlider("Voice Volume", new Vector2(100, 100 + offset * 2), fonts, textures);
             AmbientSlider = new NamedSlider("Ambient Volume", new Vector2(100, 100 + offset * 3), fonts, textures);
         }
-        public override bool Update(Stack<Menu> Menus, Dictionary<string, Texture2D> textures,
-            Dictionary<string, SpriteFont> fonts, MouseState curMouse, MouseState preMouse)
+        public override bool Update(GameTime time, Stack<Menu> Menus, Dictionary<string, Texture2D> textures,
+            Dictionary<string, SpriteFont> fonts)
         {
-            MasterSlider.Update(curMouse, preMouse);
-            SFXSlider.Update(curMouse, preMouse);
-            VoiceSlider.Update(curMouse, preMouse);
-            AmbientSlider.Update(curMouse, preMouse);
+            MasterSlider.Update(time);
+            SFXSlider.Update(time);
+            VoiceSlider.Update(time);
+            AmbientSlider.Update(time);
             return false;
         }
         public override void Draw(SpriteBatch sBatch)

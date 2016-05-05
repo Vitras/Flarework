@@ -10,25 +10,23 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace FlareWork.UI
 {
-    public class Textbox
+    public class Textbox : UIObject
     {
         Dialogue Dialogue;
         Texture2D Background;
-        Vector2 Position;
         Texture2D FinishSprite;
         SoundEffect DialogueEnd;
         SoundEffect DialogueStart;
         SoundEffect DialogueNext;
         double NextDialogueTimer;
         double BaseDialogueTimer;
-        String[] AllDialogue;
+        string[] AllDialogue;
         int Current;
         bool DialogueDone;
         bool AutoAdvance;
         
-        public Textbox(Vector2 position, SpriteFont sFont, ContentManager content)
+        public Textbox(Vector2 position, SpriteFont sFont, ContentManager content) : base(position)
         {
-            Position = position;
             Background = content.Load<Texture2D>("Images/genericbackground");
             FinishSprite = content.Load<Texture2D>("Images/defaulttextboxsprite");
             DialogueNext = content.Load<SoundEffect>("SFX/TextboxNext");
@@ -81,7 +79,7 @@ namespace FlareWork.UI
                     CloseBox();
             }
         }
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             Dialogue.Update(gameTime);            
             if(DialogueDone)
@@ -106,7 +104,7 @@ namespace FlareWork.UI
                 }
             }
         }
-        public void Draw(SpriteBatch sBatch)
+        public override void Draw(SpriteBatch sBatch)
         {           
             sBatch.Draw(Background, Position, Color.DarkBlue);
             if (Dialogue.TextDone)

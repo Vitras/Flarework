@@ -9,18 +9,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace FlareWork
 {
-    public class TextureManager
+    public static class TextureManager
     {
-        public Dictionary<string, Texture2D> textures;
-        private ContentManager Content;
+        public static Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
+        public static ContentManager Content;
 
-        public TextureManager(ContentManager content)
-        {
-            textures = new Dictionary<string, Texture2D>();
-            this.Content = content;
-        }
-
-        public Texture2D Load(string name)
+        public static Texture2D Load(string name)
         {
             if (textures.ContainsKey(name))
                 return textures[name];

@@ -13,15 +13,17 @@ namespace FlareWork
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        public static TextureManager Textures { get; set; }
-        SimpleButton button;
+        AnimatedButton button;
+        Player player;
+        Animation anim;
+        Camera camera;
         //Player player;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            Textures = new TextureManager(Content);
+            TextureManager.Content = Content;
         }
 
         /// <summary>
@@ -33,12 +35,13 @@ namespace FlareWork
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height / 2;
-            graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width / 2;
+            graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
+            graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
             IsMouseVisible = true;
             graphics.ApplyChanges();
 
-            //player = new Player(1, new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2));
+            player = new Player(1, new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2));
+            player.MovementSpeed = 100f;
             base.Initialize();
         }
 
@@ -50,12 +53,14 @@ namespace FlareWork
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            Textures.Load("Player");
-            Textures.Load("Shield");
-            Texture2D t =Textures.Load("BasicButtonInactive");
-            Texture2D t2= Textures.Load("BasicButtonHover");
-            button = new SimpleButton(Vector2.Zero, t, t2);
-            button.OnClick += (() => Console.WriteLine("Derp"));
+            TextureManager.Load("Player");
+            TextureManager.Load("Shield");
+            Animation a = new Animation("BasicAnimatedButton1x3", 0.6f, 1, 3, true);
+            Texture2D t2 = TextureManager.Load("BasicButtonHover");
+            button = new AnimatedButton(new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2), a, t2);
+            camera = new Camera(GraphicsDevice.Viewport, new Vector2(graphics.PreferredBackBufferWidth /2, graphics.PreferredBackBufferHeight / 2));
+            camera.Focus = player;
+            button.OnClick += (() => button.Position += new Vector2(30, 0));
             // TODO: use this.Content to load your game content here
         }
 
@@ -79,8 +84,10 @@ namespace FlareWork
                 Exit();
             InputManager.Update();
             // TODO: Add your update logic here
-            //player.Update(gameTime);
-            button.Update();
+            player.Update(gameTime);
+            button.Update(gameTime);
+            camera.Velocity = new Vector2(5, 5);
+            camera.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -90,13 +97,14 @@ namespace FlareWork
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
-            //player.Draw(spriteBatch);
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.Transform);
+            player.Draw(spriteBatch);
             base.Draw(gameTime);
             button.Draw(spriteBatch);
+
             spriteBatch.End();
         }
     }

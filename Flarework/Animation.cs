@@ -19,7 +19,7 @@ namespace FlareWork
         public bool IsPaused { get; set; }
         public Color Color { get; set; }
         public Vector2 Origin { get; set; }
-        private int _Frames { get { return Columns * Rows; } }
+        private int _frames { get { return Columns * Rows; } }
         private int _frame;
         private float _currentTime;
         public float Size { get; set; }
@@ -31,12 +31,13 @@ namespace FlareWork
             Rows = rows;
             Columns = columns;
             Color = Color.White;
-            FrameWidth = Game1.Textures.Load(sheet).Width / columns;
-            FrameHeight = Game1.Textures.Load(sheet).Height / rows;
+            FrameWidth = TextureManager.Load(sheet).Width / columns;
+            FrameHeight = TextureManager.Load(sheet).Height / rows;
             _frame = 0;
             Loop = loop;
             IsPaused = false;
             Origin = Vector2.Zero;
+            Size = 1.0f;
         }
 
         public virtual void Reset()
@@ -50,24 +51,24 @@ namespace FlareWork
             if (IsPaused)
                 return;
             _currentTime += (float)time.ElapsedGameTime.TotalSeconds;
-            if (_currentTime < FrameTime)
+            if (_currentTime > FrameTime)
             {
                 _currentTime -= FrameTime;
                 if (Loop)
                 {
-                    _frame = (_frame + 1) % _Frames;
+                    _frame = (_frame + 1) % _frames;
                 }
                 else
                 {
-                    _frame = Math.Min(_frame + 1, _Frames);
+                    _frame = Math.Min(_frame + 1, _frames);
                 }
             }
         }
             
         public virtual void Draw(SpriteBatch batch, Vector2 position, float rotation, int layer)
         {
-            Rectangle segment = new Rectangle(_Frames / Rows, _Frames % Columns, FrameWidth, FrameHeight);
-            batch.Draw(Game1.Textures.Load(SheetName), position, segment, Color, rotation, Origin, Size, SpriteEffects.None, layer);
+            Rectangle segment = new Rectangle(_frame % Columns * FrameWidth, _frame % Rows * FrameHeight, FrameWidth, FrameHeight);
+            batch.Draw(TextureManager.Load(SheetName), position, segment, Color, rotation, Origin, Size, SpriteEffects.None, layer);
         }
     }
 }

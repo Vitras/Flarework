@@ -15,9 +15,9 @@ namespace FlareWork.UI
         public Menu()
         {
         }
-        public virtual bool Update(Stack<Menu> Menus, Dictionary<string, Texture2D> textures, 
-            Dictionary<string, SpriteFont> Fonts, MouseState curMouse, MouseState preMouse)
-        {
+        public virtual bool Update(GameTime time, Stack<Menu> Menus, Dictionary<string, Texture2D> textures, 
+            Dictionary<string, SpriteFont> Fonts)
+        { 
             return false;
         }
         public virtual void Draw(SpriteBatch sBatch)

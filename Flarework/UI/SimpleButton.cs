@@ -9,27 +9,22 @@ using Microsoft.Xna.Framework.Input;
 namespace FlareWork.UI
 {
     public delegate void ButtonClick();
-    public class SimpleButton
+    public class SimpleButton : UIObject
     {
         protected Texture2D Inactive;
         protected Texture2D Hover;
-        protected Vector2 Position;
         protected ClickState State;
         public bool Triggered { get { return State == ClickState.Released; } }
-        public Rectangle ButtonBox { get { return new Rectangle((int)Position.X, (int)Position.Y, Hover.Width, Hover.Height); } }
+        public Rectangle ButtonBox { get { if (Inactive != null) return new Rectangle((int)Position.X, (int)Position.Y, Inactive.Width, Inactive.Height); else return Rectangle.Empty;  } }
         public event ButtonClick OnClick;
-        public SimpleButton(Vector2 position, Texture2D hover, Texture2D inactive)
+
+        public SimpleButton(Vector2 position, Texture2D hover = null, Texture2D inactive = null) : base(position)
         {
             Inactive = inactive;
             Hover = hover;
-            Position = position;
-        }
-        public virtual void OnMouseover()
-        {
-
         }
 
-        public virtual void Update()
+        public override void Update(GameTime time)
         {
             if (ButtonBox.Contains(InputManager.GetMousePosition()))
             {
@@ -51,9 +46,9 @@ namespace FlareWork.UI
                 State = ClickState.Inactive;
             }
             if (State == ClickState.Released)
-                OnClick.Invoke();
+                OnClick();
         }
-        public virtual void Draw(SpriteBatch sBatch)
+        public override void Draw(SpriteBatch sBatch)
         {
             if(State == ClickState.Pressed)
             {

@@ -21,10 +21,10 @@ namespace FlareWork.UI
         public NamedButton Cinematics;
         public NamedButton Credits;
         public NamedButton Back;
-        MenuState State; 
+        MenuState State;
         SpriteFont GeneralFont;
         public GUIMenu(Dictionary<string, Texture2D> textures, Dictionary<string, SpriteFont> Fonts)
-            :base()
+            : base()
         {
             GeneralFont = Fonts["general"];
             Initialize(textures);
@@ -45,16 +45,16 @@ namespace FlareWork.UI
             Credits = new NamedButton("Credits", GeneralFont, new Vector2(70 + hover.Width, 20 + offset * 2), hover, inactive);
             Back = new NamedButton("Back", GeneralFont, new Vector2(70 + hover.Width, 20 + offset * 3), hover, inactive);
         }
-        public override bool Update(Stack<Menu> Menus, Dictionary<string, Texture2D> textures,
-            Dictionary<string, SpriteFont> fonts, MouseState curMouse, MouseState preMouse)
+        public override bool Update(GameTime time, Stack<Menu> Menus, Dictionary<string, Texture2D> textures,
+            Dictionary<string, SpriteFont> fonts)
         {
             if (State == MenuState.Normal)
             {
-                NewGame.Update();
-                Continue.Update();
-                Options.Update();
-                Extras.Update();
-                Exit.Update();
+                NewGame.Update(time);
+                Continue.Update(time);
+                Options.Update(time);
+                Extras.Update(time);
+                Exit.Update(time);
                 if (Options.Triggered)
                 {
                     Menus.Push(new OptionsMenu(textures, fonts));
@@ -72,12 +72,12 @@ namespace FlareWork.UI
             {
                 if (State == MenuState.Extras)
                 {
-                    SoundTest.Update();
-                    Cinematics.Update();
-                    Credits.Update();
+                    SoundTest.Update(time);
+                    Cinematics.Update(time);
+                    Credits.Update(time);
                 }
-                Back.Update();
-                if(Back.Triggered)
+                Back.Update(time);
+                if (Back.Triggered)
                 {
                     State = MenuState.Normal;
                 }
@@ -86,7 +86,7 @@ namespace FlareWork.UI
         }
         public override void Draw(SpriteBatch sBatch)
         {
-            if(State != MenuState.Normal)
+            if (State != MenuState.Normal)
             {
                 if (State == MenuState.Extras)
                 {

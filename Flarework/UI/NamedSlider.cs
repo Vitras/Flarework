@@ -25,9 +25,9 @@ namespace FlareWork.UI
             slider = new Slider(new Vector2(Position.X + FontVector.X + 30, 
                 Position.Y - SliderSize.Y / 2 + FontVector.Y / 2), textures);
         } 
-        public void Update(MouseState curMouseState, MouseState preMouseState)
+        public void Update(GameTime time)
         {
-            slider.Update(curMouseState, preMouseState);
+            slider.Update(time);
         }
         public void Draw(SpriteBatch sBatch)
         {

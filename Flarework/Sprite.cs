@@ -13,7 +13,7 @@ namespace FlareWork
         public Color Color { get; set; }
         public Vector2 Origin { get; set; }
         public Vector2 Size { get; set; }
-        public Texture2D Texture { get { return Game1.Textures.Load(TextureName); } }
+        public Texture2D Texture { get { return TextureManager.Load(TextureName); } }
         public float Width { get { return Texture.Width * Size.X; } }
         public float Height { get { return Texture.Height * Size.Y; } }
 

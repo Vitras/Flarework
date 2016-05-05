@@ -8,16 +8,15 @@ using Microsoft.Xna.Framework.Input;
 
 namespace FlareWork.UI
 {
-    public class Slider
+    public class Slider : UIObject
     {
         SimpleButton LeftButton;
         SimpleButton RightButton;
         int Scale;
         int CurrentVolume;
         int offset;
-        Vector2 Position;
         public Texture2D End, Bar, Dot;
-        public Slider(Vector2 position, Dictionary<string, Texture2D> textures)
+        public Slider(Vector2 position, Dictionary<string, Texture2D> textures) : base(position)
         {
             offset = 15;
             Scale = 10;
@@ -32,10 +31,10 @@ namespace FlareWork.UI
             RightButton = new SimpleButton(new Vector2(Position.X + End.Width * 2 + (4 + Bar.Width) *
                 Scale + offset * 2 + left[0].Width, Position.Y - left[0].Height / 2 + End.Height / 2), right[0], right[1]);
         }
-        public virtual void Update(MouseState curMouseState, MouseState preMouseState)
+        public override void Update(GameTime time)
         {
-            LeftButton.Update();
-            RightButton.Update();
+            LeftButton.Update(time);
+            RightButton.Update(time);
             if (LeftButton.Triggered)
             {
                 CurrentVolume = Math.Max(CurrentVolume - 1, 0);
@@ -45,7 +44,7 @@ namespace FlareWork.UI
                 CurrentVolume = Math.Min(CurrentVolume + 1, Scale);
             }
         }
-        public virtual void Draw(SpriteBatch sBatch)
+        public override void Draw(SpriteBatch sBatch)
         {
             LeftButton.Draw(sBatch);
             RightButton.Draw(sBatch);
