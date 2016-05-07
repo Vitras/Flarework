@@ -38,7 +38,7 @@ namespace FlareWork
 
         public override void Update(GameTime time)
         {
-            base.Update(time);
+            Velocity = Vector2.Zero;
             float dRotation = 0;
             float dx = 0;
             float dy = 0;
@@ -63,7 +63,7 @@ namespace FlareWork
             }
             if (dx != 0 || dy != 0 || dRotation != 0)
             {
-                Position += new Vector2(dx, dy) * MovementSpeed * (float)time.ElapsedGameTime.TotalSeconds;
+                Velocity = new Vector2(dx, dy) * MovementSpeed * (float)time.ElapsedGameTime.TotalSeconds;
                 ShieldRotation += dRotation * RotationSpeed * (float)time.ElapsedGameTime.TotalSeconds;
                 if (ShieldRotation > Math.PI * 2)
                     ShieldRotation -= (float)Math.PI * 2;
@@ -78,6 +78,7 @@ namespace FlareWork
             Left.Update(time);
             Up.Update(time);
             Down.Update(time);
+            base.Update(time);
         }
 
         public override void Draw(SpriteBatch batch)

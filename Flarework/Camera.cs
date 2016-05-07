@@ -6,10 +6,12 @@ using Microsoft.Xna.Framework.Graphics;
 public class Camera : GameObject
 {
     public GameObject Focus { get; set; }
+    public float MaxDistance { get; set; }
     public Matrix Transform { get; private set; }
     public float Rotation { get; set; }
     public float Zoom { get; set; }
     public Rectangle Bounds { get; set; }
+    public bool Debug { get; set; }
 
     public Rectangle VisibleArea
     {
@@ -47,11 +49,32 @@ public class Camera : GameObject
         Bounds = viewport.Bounds;
         Zoom = 1f;
         Rotation = 0f;
+        MaxDistance = 0f;
     }
 
     public override void Update(GameTime time)
     {
         base.Update(time);
         Transform = TransformMatrix;
+        if(Focus != null)
+        {
+            FollowFocus();
+        }
+    }
+
+    public void Draw(SpriteBatch sBatch)
+    {
+        if(Debug)
+        {
+            sBatch.Draw(TextureManager.Load("Player"), Position, Color.White);
+        }
+    }
+    
+    public void FollowFocus()
+    {
+        if((Focus.Position - Position).Length() > MaxDistance)
+        {
+            Position += Focus.Velocity;
+        }
     }
 }

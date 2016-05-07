@@ -60,6 +60,8 @@ namespace FlareWork
             button = new AnimatedButton(new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2), a, t2);
             camera = new Camera(GraphicsDevice.Viewport, new Vector2(graphics.PreferredBackBufferWidth /2, graphics.PreferredBackBufferHeight / 2));
             camera.Focus = player;
+            camera.MaxDistance = 100f;
+            camera.Debug = true;
             button.OnClick += (() => button.Position += new Vector2(30, 0));
             // TODO: use this.Content to load your game content here
         }
@@ -86,7 +88,7 @@ namespace FlareWork
             // TODO: Add your update logic here
             player.Update(gameTime);
             button.Update(gameTime);
-            camera.Velocity = new Vector2(5, 5);
+            //camera.Velocity = new Vector2(5, 5);
             camera.Update(gameTime);
             base.Update(gameTime);
         }
@@ -103,6 +105,7 @@ namespace FlareWork
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.Transform);
             player.Draw(spriteBatch);
             base.Draw(gameTime);
+            camera.Draw(spriteBatch);
             button.Draw(spriteBatch);
 
             spriteBatch.End();
